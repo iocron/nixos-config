@@ -30,17 +30,27 @@
     environment.shells = with pkgs; [ fish bash zsh ];
     programs.fish.enable = true;
     programs.zsh.enable = true;
+  
+    # CUSTOM SCRIPT
+    # system.activationScripts.script.text = ''
+    #   #!/bin/sh
+    #   echo '
+    #   123
+    #   456
+    #   ' > test.txt
+    # '';
 
     # GIT
     programs.git.enable = true;
     
     # PRINTING (CUPS + AVAHI Autodiscover)
-    # (uncomment the lines below to enable printer and autodiscover)
-    # (check firewall/vpn and/or install system package carps-cups / sane-airscan 
-    # if you are still having problems with your printer)
+    # 1. Uncomment the lines below to enable printer and autodiscover
+    # 2. If you are still having problems with your printer, then: 
+    #    - check FIREWALL/VPN to not block the local network!!
+    #    - and/or install system packages carps-cups / sane-airscan
     # services.printing.enable = true;
     # services.printing.browsing = true;
-    # services.printing.drivers = [ pkgs.gutenprint ];
+    # services.printing.drivers = [ pkgs.gutenprint ]; # pkgs.cnijfilter2
     # services.printing.defaultShared = false;
     # services.avahi.enable = true;
     # services.avahi.nssmdns = true;
@@ -66,7 +76,7 @@
     services.pcscd.enable = true; # not needed anymore for the yubikey-agent?!
     # services.udev.packages = [ pkgs.yubikey-personalization ];
     # services.yubikey-agent.enable = true;
-
+  
     # SYSTEM PACKAGES INSTALL
     # (to search already installed packages use: `nix search wget`)
     environment.systemPackages = with pkgs; [
@@ -98,7 +108,7 @@
       zsh
     ];
   };
-
+  
   # options = with lib; with types; {
   #   systemPackages = mkOption { type = listOf package; };
   # };

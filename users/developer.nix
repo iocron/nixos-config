@@ -1,5 +1,6 @@
 { pkgs, lib, buildPackages, ... }: 
-# let 
+let 
+  customConfig = import /users/kde-config.nix;
   # unstable = fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11-pre.tar.gz";
   # someVariable = "123"; # use inside "in" block
   # unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
@@ -7,7 +8,7 @@
   #   (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/master")
   #   # reuse the current configuration
   #   { config = config.nixpkgs.config; };
-# in
+in
 {
   # IMPORTS
   # imports = [
@@ -32,9 +33,20 @@
   
   # HOME-MANAGER USER CONFIG
   ## (see also list of lsp-servers: https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers)
-  home-manager.users.developer = {
+  home-manager.users.developer = { lib, ... }: {
+    # home.activation = import ./kde-config.nix;
+    home.activation.kwriteconfig5 = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      # https://github.com/LunNova/nixos-configs/blob/dev/users/lun/on-nixos/kdeconfig.nix
+      $DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName "big_icons"
+      $DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file ~/.config/kdeglobals --group KDE --key SingleClick false
+      $DRY_RUN_CMD ${pkgs.libsForQt5.qt5.qttools.bin}/bin/qdbus org.kde.KWin /KWin reconfigure || echo "KWin reconfigure failed"
+    '';
     home.stateVersion = "23.05";
     home.packages = with pkgs; [
+      awscli2 # Packages/Bins: aws aws_completer
+      awsls
+      awslogs
+      awstats
       # Choose packages from: https://search.nixos.org/packages
       chromium # Browser
       devbox
@@ -48,6 +60,7 @@
       psmisc # includes: fuser, killall, prtstat, pslog, pstree, peekfd
       k3d # DevOps Tools
       k3s # DevOps Tools
+      k9s # DevOps Tools (sweet for monitoring kubernetes, etc.)
       keychain # SSH Key Agent Helper
       lazydocker # Docker
       lazygit # GIT
@@ -68,6 +81,7 @@
       rancher # DevOps Tool
       rustup
       # rust-analyzer # Rust LSP # collides with rustup rust installation
+      signal-desktop
       taplo # TOML LSP
       teleport # ZeroTrust
       thunderbird # Mail App
@@ -103,6 +117,7 @@
       # "audio/*" = "org.gnome.Lollypop.desktop";
     };
 
+    # TODO: https://github.com/LunNova/nixos-configs/blob/dev/users/lun/on-nixos/kdeconfig.nix
     xsession.initExtra = ''
       kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName "big_icons"
     '';
@@ -117,6 +132,17 @@
     #   };
     #   wantedBy = [ "multi-user.target" ];
     # };
+
+    # environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    #   elisa
+    #   gwenview
+    #   okular
+    #   oxygen
+    #   khelpcenter
+    #   konsole
+    #   plasma-browser-integration
+    #   print-manager
+    # ];
 
     # KEYCHAIN
     # (loads your private keys automatically to the agent)

@@ -20,6 +20,8 @@
     networking.firewall = {
       enable = true;
       allowPing = false;
+      # allowedTCPPorts = [ 80 443 631 ];
+      # allowedUDPPorts = [ 80 443 631 ]; 
       # allowedTCPPorts = [ 80 443 1119 ]; # 1119 (for Bnet)
       # allowedUDPPorts = [  ]; # 1119 (for Bnet) 
       #extraCommands = ''

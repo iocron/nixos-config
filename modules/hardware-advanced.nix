@@ -9,6 +9,7 @@
     # OpenGL
     hardware.opengl.enable = true;
     hardware.opengl.driSupport = true;
+    hardware.opengl.driSupport32Bit = true;
 
     # Load nvidia driver for Xorg and Wayland
     # (read further: https://nixos.wiki/wiki/Nvidia)
