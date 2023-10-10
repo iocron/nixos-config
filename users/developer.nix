@@ -46,7 +46,6 @@ in
       awscli2 # Packages/Bins: aws aws_completer
       awsls
       awslogs
-      awstats
       # Choose packages from: https://search.nixos.org/packages
       chromium # Browser
       devbox
@@ -57,11 +56,14 @@ in
       gimp
       go # GoLang
       gopls # GoLang LSP
+      jq
       psmisc # includes: fuser, killall, prtstat, pslog, pstree, peekfd
       k3d # DevOps Tools
       k3s # DevOps Tools
       k9s # DevOps Tools (sweet for monitoring kubernetes, etc.)
       keychain # SSH Key Agent Helper
+      kubectl
+      kubernetes-helm
       lazydocker # Docker
       lazygit # GIT
       libreoffice # Office
@@ -87,6 +89,7 @@ in
       thunderbird # Mail App
       # trivy # security scanner
       vscodium # equal to "vscode" except tracking/telemetry
+      yai # AI powered terminal assistant
       # yubikey-agent # moved to system.nix for enabling as system service
       yubikey-manager
       yubikey-manager-qt
