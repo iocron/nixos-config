@@ -34,21 +34,22 @@ in
   # HOME-MANAGER USER CONFIG
   ## (see also list of lsp-servers: https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers)
   home-manager.users.developer = { lib, ... }: {
-    # home.activation = import ./kde-config.nix;
-    home.activation.kwriteconfig5 = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      # https://github.com/LunNova/nixos-configs/blob/dev/users/lun/on-nixos/kdeconfig.nix
-      $DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName "big_icons"
-      $DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file ~/.config/kdeglobals --group KDE --key SingleClick false
-      $DRY_RUN_CMD ${pkgs.libsForQt5.qt5.qttools.bin}/bin/qdbus org.kde.KWin /KWin reconfigure || echo "KWin reconfigure failed"
-    '';
+    # ENVIRONMENT VARIABLES
+    home.sessionVariables = {
+      EDITOR = "hx"; # Set Default Code Editor
+    };
+
+    # HOME-MANAGER VERSION
     home.stateVersion = "23.05";
+
+    # HOME-MANAGER PACKAGES
     home.packages = with pkgs; [
-      awscli2 # Packages/Bins: aws aws_completer
-      awsls
-      awslogs
       # Choose packages from: https://search.nixos.org/packages
+      awscli2 # DevOps (includes: aws aws_completer)
+      awsls # DevOps
+      awslogs # DevOps
       chromium # Browser
-      devbox
+      devbox # Development
       epiphany # Browser (similar to safari webkit browser)
       firefox # Browser
       gcc # somewhat a dependency for RUST
@@ -62,8 +63,8 @@ in
       k3s # DevOps Tools
       k9s # DevOps Tools (sweet for monitoring kubernetes, etc.)
       keychain # SSH Key Agent Helper
-      kubectl
-      kubernetes-helm
+      kubectl # DevOps
+      kubernetes-helm # DevOps
       lazydocker # Docker
       lazygit # GIT
       libreoffice # Office
@@ -87,8 +88,8 @@ in
       taplo # TOML LSP
       teleport # ZeroTrust
       thunderbird # Mail App
-      # trivy # security scanner
-      vscodium # equal to "vscode" except tracking/telemetry
+      trivy # DevOps / SecOps
+      vscodium # Equal to "vscode" except tracking/telemetry
       yai # AI powered terminal assistant
       # yubikey-agent # moved to system.nix for enabling as system service
       yubikey-manager
@@ -100,30 +101,40 @@ in
     xdg.mimeApps.enable = true;
     xdg.mimeApps.defaultApplications = {
       "application/pdf" = "okularApplication_pdf.desktop";
-      "application/javascript" = "codium.desktop";
-      "application/json" = "codium.desktop";
+      # "application/javascript" = "codium.desktop";
+      # "application/json" = "codium.desktop";
       "application/msword" = "writer.desktop";
-      "application/xml" = "codium.desktop";
-      "application/x-javascript" = "codium.desktop";
+      # "application/xml" = "codium.desktop";
+      # "application/x-javascript" = "codium.desktop";
       "application/x-extension-htm" = "firefox.desktop";
       "application/x-extension-html" = "firefox.desktop";
-      "application/x-httpd-php" = "codium";
+      # "application/x-httpd-php" = "codium";
       # "inode/directory" = "pcmanfm.desktop";
       "text/css" = "codium.desktop";
       "text/csv" = "calc.desktop";
       "text/html" = "firefox.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
       "text/rtf" = "writer.desktop";
-      "text/x-python" = "codium.desktop";
+      # "text/x-python" = "codium.desktop";
       # "image/*" = "imv-folder.desktop";
       # "video/*" = "umpv.desktop";
       # "audio/*" = "org.gnome.Lollypop.desktop";
     };
 
-    # TODO: https://github.com/LunNova/nixos-configs/blob/dev/users/lun/on-nixos/kdeconfig.nix
-    xsession.initExtra = ''
-      kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName "big_icons"
+    # KDE ADDITIONAL CONFIGS
+    # home.activation = import ./kde-config.nix;
+    home.activation.kwriteconfig5 = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      # https://github.com/LunNova/nixos-configs/blob/dev/users/lun/on-nixos/kdeconfig.nix
+      $DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName "big_icons"
+      $DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file ~/.config/kdeglobals --group KDE --key SingleClick false
+      $DRY_RUN_CMD ${pkgs.libsForQt5.qt5.qttools.bin}/bin/qdbus org.kde.KWin /KWin reconfigure || echo "KWin reconfigure failed"
     '';
+
+    # SOME KDE TESTS
+    # TODO: https://github.com/LunNova/nixos-configs/blob/dev/users/lun/on-nixos/kdeconfig.nix
+    # xsession.initExtra = ''
+    #   kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName "big_icons"
+    # '';
     # systemd.services.plasma5extended = {
     #   enable = true;
     #   description = "My Custom Script";
@@ -135,7 +146,6 @@ in
     #   };
     #   wantedBy = [ "multi-user.target" ];
     # };
-
     # environment.plasma5.excludePackages = with pkgs.libsForQt5; [
     #   elisa
     #   gwenview
@@ -173,6 +183,9 @@ in
     #   #   };
     #   # };
     # };
+
+    # DIRENV
+    programs.direnv.enable = true;
 
     # NEOVIM
     programs.neovim.enable = true;
