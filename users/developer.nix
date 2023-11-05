@@ -45,51 +45,69 @@ in
     # HOME-MANAGER PACKAGES
     home.packages = with pkgs; [
       # Choose packages from: https://search.nixos.org/packages
+      # alacritty # Terminal Emulator
+      ansible # DevOps (IaC, app/server deployment)
+      ansible-language-server
       awscli2 # DevOps (includes: aws aws_completer)
       awsls # DevOps
       awslogs # DevOps
+      bottom # A better htop
       chromium # Browser
+      delve # GoLang Debugger
       devbox # Development
       epiphany # Browser (similar to safari webkit browser)
       firefox # Browser
       gcc # somewhat a dependency for RUST
       # gftp
-      gimp
+      gimp # Image Tool
       go # GoLang
       gopls # GoLang LSP
-      jq
+      hcloud # Hetzner Cloud
+      jq # JSON Parser
       psmisc # includes: fuser, killall, prtstat, pslog, pstree, peekfd
-      k3d # DevOps Tools
-      k3s # DevOps Tools
-      k9s # DevOps Tools (sweet for monitoring kubernetes, etc.)
+      k3d # DevOps
+      k3s # DevOps
+      k9s # DevOps (sweet for monitoring kubernetes, etc.)
       keychain # SSH Key Agent Helper
+      kops # DevOps
       kubectl # DevOps
       kubernetes-helm # DevOps
       lazydocker # Docker
       lazygit # GIT
       libreoffice # Office
+      lldb # high-performance debugger (e.g. for GoLang)
       lua-language-server # Lua LSP
       nerdfonts # IconFont
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
+      nodePackages.jsdoc
       nodePackages.svelte-language-server
       nodePackages.typescript-language-server
       nodePackages.yaml-language-server
+      nodePackages.vls
       nodePackages.vscode-langservers-extracted
       nil # NixOS Configuration LSP
       nodejs_18 # NodeJS
       marksman # Markdown LSP
-      minikube # DevOps Tools
+      minikube # DevOps
       openssl
-      rancher # DevOps Tool
-      rustup
+      # pycritty # Configurator for alacritty
+      rancher # DevOps
+      ripgrep # Regex Pattern String Replacer
+      rustup # Rust (Toolchain)
       # rust-analyzer # Rust LSP # collides with rustup rust installation
       signal-desktop
       taplo # TOML LSP
       teleport # ZeroTrust
+      terraform # DevOps (IaC)
+      terraform-ls
       thunderbird # Mail App
       trivy # DevOps / SecOps
+      # unstable.wails # Golang Fullstack/Desktop Framework
+      # wezterm # Terminal Emulator
       vscodium # Equal to "vscode" except tracking/telemetry
+      # vscode-extensions.vadimcn.vscode-lldb # usually "lldb" package should be enough
+      xxh # Use your favorite shell through ssh
       yai # AI powered terminal assistant
       # yubikey-agent # moved to system.nix for enabling as system service
       yubikey-manager
@@ -120,6 +138,9 @@ in
       # "video/*" = "umpv.desktop";
       # "audio/*" = "org.gnome.Lollypop.desktop";
     };
+
+    # A multi-shell multi-command argument completer.
+    # programs.carapace.enable = true;
 
     # KDE ADDITIONAL CONFIGS
     # home.activation = import ./kde-config.nix;
@@ -206,6 +227,11 @@ in
     	fish_config prompt choose arrow 
     	# fish_config theme choose Dracula # not working in nixos
     	# yes | fish_config theme save # not working in nixos
+
+      # AWS Auto Completer
+      if type -q aws_completer
+        aws_completer
+      end
 
       # YUBIKEY ALIASES
       if nix-store -q --requisites ~/.nix-profile | grep -q "yubikey-manager"
