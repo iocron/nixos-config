@@ -1,8 +1,10 @@
 { pkgs, lib, buildPackages, ... }: 
 let 
   customConfig = import /users/kde-config.nix;
-  # unstable = fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11-pre.tar.gz";
+  defaultBrowser = "firefox";
+  defaultEditor = "hx";
   # someVariable = "123"; # use inside "in" block
+  # unstable = fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11-pre.tar.gz";
   # unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
   # unstable = import
   #   (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/master")
@@ -24,19 +26,12 @@ in
     # shell = pkgs.fish; # Set fish as default shell
   };
 
-  # https://chat.openai.com/c/752fa251-2fb7-4bcf-82c3-c5329b6309da
-  # buildPackages.fetchgit = {
-  #   name = "rustc";
-  #   url = "";
-  #   rev = "";    
-  # };
-  
   # HOME-MANAGER USER CONFIG
   ## (see also list of lsp-servers: https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers)
   home-manager.users.developer = { lib, ... }: {
     # ENVIRONMENT VARIABLES
     home.sessionVariables = {
-      EDITOR = "hx"; # Set Default Code Editor
+      EDITOR = "${defaultEditor}"; # Set Default Code Editor
     };
 
     # HOME-MANAGER VERSION
@@ -45,6 +40,7 @@ in
     # HOME-MANAGER PACKAGES
     home.packages = with pkgs; [
       # Choose packages from: https://search.nixos.org/packages
+      # aichat # https://github.com/sigoden/aichat
       # alacritty # Terminal Emulator
       ansible # DevOps (IaC, app/server deployment)
       ansible-language-server
@@ -124,19 +120,24 @@ in
       "application/msword" = "writer.desktop";
       # "application/xml" = "codium.desktop";
       # "application/x-javascript" = "codium.desktop";
-      "application/x-extension-htm" = "firefox.desktop";
-      "application/x-extension-html" = "firefox.desktop";
+      "application/x-extension-htm" = "${defaultBrowser}.desktop";
+      "application/x-extension-html" = "${defaultBrowser}.desktop";
       # "application/x-httpd-php" = "codium";
       # "inode/directory" = "pcmanfm.desktop";
       "text/css" = "codium.desktop";
       "text/csv" = "calc.desktop";
-      "text/html" = "firefox.desktop";
+      "text/htm" = "${defaultBrowser}.desktop";
+      "text/html" = "${defaultBrowser}.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
       "text/rtf" = "writer.desktop";
       # "text/x-python" = "codium.desktop";
       # "image/*" = "imv-folder.desktop";
       # "video/*" = "umpv.desktop";
       # "audio/*" = "org.gnome.Lollypop.desktop";
+      "x-scheme-handler/about" = "${defaultBrowser}.desktop";
+      "x-scheme-handler/http" = "${defaultBrowser}.desktop";
+      "x-scheme-handler/https" = "${defaultBrowser}.desktop";
+      "x-scheme-handler/unknown" = "${defaultBrowser}.desktop";
     };
 
     # A multi-shell multi-command argument completer.

@@ -22,9 +22,6 @@
     # Console Keymap
     console.keyMap = config.defaultLang;
     
-    # Steam
-    # programs.steam.enable = true;
-
     # Shell Defaults
     users.defaultUserShell = pkgs.fish;
     environment.shells = with pkgs; [ fish bash zsh ];
@@ -122,7 +119,6 @@
     # (to search already installed packages use: `nix search wget`)
     environment.systemPackages = with pkgs; [
       # Choose packages: https://search.nixos.org/packages
-      # aichat # https://github.com/sigoden/aichat
       # carps-cups # optional
       # canon-cups-ufr2 # optional
       dig
