@@ -5,9 +5,8 @@ My base configuration / starterkit-template (without flakes) for a simple and co
 ## Install
 1. A already installed NixOS is required
 2. Clone the contents of this repo to your /etc/nixos
-3. Adjust / extend the configuration to your liking
-4. Test your configuration and check if everything is working: `sudo nixos-rebuild test`
-5. Switch / Build to new configuration: `sudo nixos-rebuild switch`
+3. Change the configuration to your liking
+4. Switch / Build the new configuration: `sudo nixos-rebuild switch` (or test your configuration first with `sudo nixos-rebuild test`)
 
 ## Tip
 Use home-manager to further extend your configuration for the individual users or administrate them all through this global home-manager nixos-configuration. Checkout the users/ folder.
@@ -16,12 +15,13 @@ Use home-manager to further extend your configuration for the individual users o
 User "developer":
 - Browsers: Firefox, Chromium, Epiphany (similar to Safari)
 - DevOps: Docker, devbox, lazydocker, k3d, k3s, minikube, rancher
-- Editors: helix editor, neovim (naked), vscodium (similar to vscode)
+- IDEs/Editors: helix editor (default), neovim (naked), vscodium (similar to vscode)
 - Languages: Golang, Rust, NodeJS, TOML, Markdown, NixOS/Nil, +LSP for all of them
 - Networking: vpn, dig, mtr, whois, ..
-- Shells: fish shell (default), zsh
-- SysAdmin/Sec Tools: teleport, gnupg agent, keychain, fuser, killall, prstat, pslog, pstree, peekfd, gparted, yubikey, htop, ..
-- Misc: Gcc, Git (+git diff delta), Lazygit, LibreOffice, Gimp, YubikeyManager, Thunderbird, Print Drivers/Autodiscovery (commented), ..
+- Shells: bash, zsh, fish shell (default)
+- SysAdmin/SecOps: teleport, trivy, gnupg agent, keychain, fuser, killall, prstat, pslog, pstree, peekfd, gparted, yubikey, htop, ..
+- Misc: Gcc, Git, Lazygit, Yai (AI Terminal Chat), LibreOffice, Gimp, Thunderbird, Print Drivers/Autodiscovery (commented), ..
+- and many more..
 
 User "gamer" (only partly tested): 
 - Steam
