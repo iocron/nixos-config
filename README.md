@@ -16,7 +16,7 @@ User "developer":
 - Browsers: Firefox, Chromium, Epiphany (similar to Safari)
 - DevOps: Docker, devbox, lazydocker, k3d, k3s, minikube, rancher
 - IDEs/Editors: helix editor (default), neovim (naked), vscodium (similar to vscode)
-- Languages: Golang, Rust, NodeJS, TOML, Markdown, NixOS/Nil, +LSP for all of them
+- Languages: Golang, Rust, JS/TS/JSX/Vue/Svelte, Lua, Bash, TOML, Markdown, Nix/Nil, YAML, +LSP for all of them
 - Networking: vpn, dig, mtr, whois, ..
 - Shells: bash, zsh, fish shell (default)
 - SysAdmin/SecOps: teleport, trivy, gnupg agent, keychain, fuser, killall, prstat, pslog, pstree, peekfd, gparted, yubikey, htop, ..

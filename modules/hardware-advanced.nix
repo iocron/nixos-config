@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }: 
 {
   # import = [];
+  # Usage: e.g. use in configuration.nix like: imports = [./modules/hardware-advanced.nix ...]
 
   config = {
     # Bluetooth
