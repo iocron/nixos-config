@@ -9,7 +9,7 @@
     networking.networkmanager.enable = true;
 
     # HostName
-    networking.hostName = "nixos"; # Define your hostname.
+    networking.hostName = "foss"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Proxy

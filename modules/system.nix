@@ -30,7 +30,13 @@
     environment.shells = with pkgs; [ fish bash zsh ];
     programs.fish.enable = true;
     programs.zsh.enable = true;
-  
+
+    # FLATPAK
+    services.flatpak.enable = false;
+
+    # Enable Nix-Flakes
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];  
+
     # CUSTOM SCRIPT
     # system.activationScripts.script.text = ''
     #   #!/bin/sh
@@ -39,6 +45,20 @@
     #   456
     #   ' > test.txt
     # '';
+    
+    # System Auto Updates/Upgrades
+    # (see also: https://itsfoss.com/things-to-do-after-installing-nixos/)
+    system.autoUpgrade = {
+      enable = true;
+      # flake = inputs.self.outPath;
+      flags = [
+        "--update-input"
+        "nixpkgs"
+        "-L" # print build logs
+      ];
+      dates = "02:00";
+      randomizedDelaySec = "45min";
+    };
 
     # Systemd Timed Services/Jobs
     # (https://nixos.wiki/wiki/Systemd/Timers)
