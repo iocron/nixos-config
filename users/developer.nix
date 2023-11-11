@@ -28,7 +28,7 @@ in
 
   # HOME-MANAGER USER CONFIG
   ## (see also list of lsp-servers: https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers)
-  home-manager.users.developer = { lib, ... }: {
+  home-manager.users.developer = { lib, config, ... }: {
     # ENVIRONMENT VARIABLES
     home.sessionVariables = {
       EDITOR = "${defaultEditor}"; # Set Default Code Editor
@@ -112,32 +112,35 @@ in
 
     # MIME TYPES
     # xdg.configFile."mimeapps.list".force = true;
-    xdg.mimeApps.enable = true;
-    xdg.mimeApps.defaultApplications = {
-      "application/pdf" = "okularApplication_pdf.desktop";
-      # "application/javascript" = "codium.desktop";
-      # "application/json" = "codium.desktop";
-      "application/msword" = "writer.desktop";
-      # "application/xml" = "codium.desktop";
-      # "application/x-javascript" = "codium.desktop";
-      "application/x-extension-htm" = "${defaultBrowser}.desktop";
-      "application/x-extension-html" = "${defaultBrowser}.desktop";
-      # "application/x-httpd-php" = "codium";
-      # "inode/directory" = "pcmanfm.desktop";
-      "text/css" = "codium.desktop";
-      "text/csv" = "calc.desktop";
-      "text/htm" = "${defaultBrowser}.desktop";
-      "text/html" = "${defaultBrowser}.desktop";
-      "text/plain" = "org.gnome.gedit.desktop";
-      "text/rtf" = "writer.desktop";
+    xdg.mimeApps = {
+      enable = true;
+
+      # MIME Default Apps (Enforced)
+      defaultApplications."application/x-extension-htm" = "${defaultBrowser}.desktop";
+      defaultApplications."application/x-extension-html" = "${defaultBrowser}.desktop";
+      defaultApplications."text/htm" = "${defaultBrowser}.desktop";
+      defaultApplications."text/html" = "${defaultBrowser}.desktop";
+      defaultApplications."x-scheme-handler/about" = "${defaultBrowser}.desktop";
+      defaultApplications."x-scheme-handler/http" = "${defaultBrowser}.desktop";
+      defaultApplications."x-scheme-handler/https" = "${defaultBrowser}.desktop";
+      defaultApplications."x-scheme-handler/unknown" = "${defaultBrowser}.desktop";
+
+      # MIME Associated Apps (Non-Enforced)
+      associations.added."application/javascript" = "codium.desktop";
+      associations.added."application/json" = "codium.desktop";
+      associations.added."application/msword" = "writer.desktop";
+      associations.added."application/pdf" = "okularApplication_pdf.desktop";
+      associations.added."application/x-javascript" = "codium.desktop";
+      associations.added."application/xml" = "codium.desktop";
+      associations.added."text/css" = "codium.desktop";
+      associations.added."text/csv" = "calc.desktop";
+      associations.added."text/plain" = "org.gnome.gedit.desktop";
+      associations.added."text/rtf" = "writer.desktop";
       # "text/x-python" = "codium.desktop";
       # "image/*" = "imv-folder.desktop";
       # "video/*" = "umpv.desktop";
       # "audio/*" = "org.gnome.Lollypop.desktop";
-      "x-scheme-handler/about" = "${defaultBrowser}.desktop";
-      "x-scheme-handler/http" = "${defaultBrowser}.desktop";
-      "x-scheme-handler/https" = "${defaultBrowser}.desktop";
-      "x-scheme-handler/unknown" = "${defaultBrowser}.desktop";
+      # "inode/directory" = "pcmanfm.desktop";
     };
 
     # A multi-shell multi-command argument completer.
