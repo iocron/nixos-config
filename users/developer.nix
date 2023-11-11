@@ -83,7 +83,7 @@ in
       nodePackages.vls
       nodePackages.vscode-langservers-extracted
       nil # NixOS Configuration LSP
-      nodejs_18 # NodeJS
+      nodejs_20 # NodeJS
       marksman # Markdown LSP
       minikube # DevOps
       openssl
