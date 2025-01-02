@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 let
-  homeManagerVersion = "23.05";
+  homeManagerVersion = "24.11";
   home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/release-${homeManagerVersion}.tar.gz";
     # Get Hash Example: nix-hash --flat --base32 --type sha256 release-23.05.tar.gz # does not always work
-    sha256 = "sha256:0rwzab51hnr6cmm1w5zmfh29gbkg6byv8jnr7frcv5kd6m8kna41";
+    sha256 = "sha256:c91a30f330f4421ee96093eaa51eacfbc65c352ce5bced2aa8a23f69f1b817fe";
 
     # Usual home-manager setup: 
     # url = "github:nix-community/home-manager";

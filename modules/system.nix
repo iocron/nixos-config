@@ -10,7 +10,7 @@
     # this value at the release version of the first install of this system.
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    system.stateVersion = "23.05";
+    system.stateVersion = "24.11";
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
@@ -23,10 +23,10 @@
     console.keyMap = config.defaultLang;
     
     # Shell Defaults
-    users.defaultUserShell = pkgs.fish;
-    environment.shells = with pkgs; [ fish bash zsh ];
-    programs.fish.enable = true;
+    users.defaultUserShell = pkgs.zsh;
+    environment.shells = with pkgs; [ bash zsh ]; # fish
     programs.zsh.enable = true;
+    # programs.fish.enable = true;
 
     # FLATPAK
     services.flatpak.enable = false;
@@ -121,9 +121,10 @@
       # Choose packages: https://search.nixos.org/packages
       # carps-cups # optional
       # canon-cups-ufr2 # optional
+      brave
       dig
-      firefox
-      fish
+      # firefox
+      # fish
       git
       gnome.gedit
       gparted

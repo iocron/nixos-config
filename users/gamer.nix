@@ -16,11 +16,12 @@
 
   # HOME-MANAGER USER CONFIG
   home-manager.users.gamer = {
-    home.stateVersion = "23.05";
+    home.stateVersion = "24.11";
     home.packages = with pkgs; [
       # Choose packages: https://search.nixos.org/packages
+      brave
       dxvk # Wine DirectX dependency
-      firefox
+      # firefox
       # bottles # gaming / apps emulator (wine-based)
       joycond
       lutris # gaming / apps emulator (wine-based)
