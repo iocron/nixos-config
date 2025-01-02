@@ -38,7 +38,7 @@
       ./modules/networking.nix
       ./modules/security.nix
       ./modules/system.nix
-      ./modules/xserver.nix
+      # ./modules/xserver.nix # only for KDE5?!?
       ./users
   ];
 }
