@@ -8,7 +8,7 @@
     hardware.bluetooth.enable = true;
 
     # OpenGL
-    hardware.graphics.enable32Bit = true # opengl.enable/driSupport has been replaced by this
+    hardware.graphics.enable32Bit = true; # opengl.enable/driSupport has been replaced by this
     # hardware.opengl.enable = true;
     # hardware.opengl.driSupport = true; # DEPRECATED: has no effect anymore
     # hardware.opengl.driSupport32Bit = true;
