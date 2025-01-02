@@ -16,7 +16,7 @@ let
 in
 {
   home-manager.useGlobalPkgs = true;
-  home-manager.backupFileExtension = "hm-backup"
+  home-manager.backupFileExtension = "hm-backup";
   # home-manager.useUserPackages = true;
   imports = [
     (import "${home-manager}/nixos")

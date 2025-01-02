@@ -4,8 +4,11 @@ let
   defaultBrowser = "brave";
   defaultEditor = "hx";
   # someVariable = "123"; # use inside "in" block
-  # unstable = fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11-pre.tar.gz";
-  # unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  # unstable = fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/24.11-pre.tar.gz";
+  ## INSTALL_INFO: Add & Update nixos-unstable before using the unstable channel:
+  ##     sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+  ##     sudo nix-channel --update
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
   # unstable = import
   #   (builtins.fetchTarball "https://github.com/nixos/nixpkgs/tarball/master")
   #   # reuse the current configuration
@@ -115,7 +118,7 @@ in
       # wezterm # Terminal Emulator
       vscodium # Equal to "vscode" except tracking/telemetry
       # vscode-extensions.vadimcn.vscode-lldb # usually "lldb" package should be enough
-      warp-terminal
+      unstable.warp-terminal
       # xxh # Use your favorite shell through ssh
       # yubikey-agent # moved to system.nix for enabling as system service
       yubikey-manager
