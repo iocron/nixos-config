@@ -7,6 +7,7 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     # boot.initrd.availableKernelModules = [ "uas" "usbcore" "usb_storage" ];
+    # boot.initrd.luks.devices."luks-hashxxxxxxx".device = "..." # TODO: CHANGE THIS if you ENCRYPTED your DEVICE!!
   };
 
   # options = {};

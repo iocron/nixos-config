@@ -73,7 +73,7 @@ in
       k9s # DevOps (sweet for monitoring kubernetes, etc.)
       keychain # SSH Key Agent Helper
       # kops # DevOps
-      kubectl # DevOps
+      # kubectl # DevOps
       kubernetes-helm # DevOps
       lazydocker # Docker
       lazygit # GIT
@@ -95,7 +95,7 @@ in
       minikube # DevOps
       mods # AI on the command line
       openssl
-      pulumi # Competitor to Terraform
+      # pulumi # Competitor to Terraform
       # pycritty # Configurator for alacritty
       # rancher # DevOps
       rclone # cloud storage sync tool
@@ -218,9 +218,9 @@ in
     # ZSH SHELL
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
       enableCompletion = true;
-      enableSyntaxHighlighting = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
     };
 
     # GIT

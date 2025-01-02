@@ -8,6 +8,7 @@
 
     # Enable the KDE Plasma Desktop Environment.
     services.xserver.displayManager.sddm.enable = true;
+    services.xserver.desktopManager.plasma6.enable = true;
     # services.xserver.desktopManager.plasma5.enable = true;
     # services.xserver.displayManager.setupCommands = ''
     #   kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName big_icons # icons
@@ -50,7 +51,7 @@
 
     # Configure keymap in X11
     services.xserver.layout = "de";
-    services.xserver.xkbVariant = "";
+    services.xserver.variant = "";
 
     # Enable touchpad support (enabled default in most desktopManager).
     ## services.xserver.libinput.enable = true;
