@@ -11,12 +11,15 @@
     isNormalUser = true;
     # description = "gamer";
     extraGroups = [ "networkmanager" ];
-    # shell = pkgs.fish; # Set fish as default shell
+    # shell = pkgs.zsh; # Set fish as default shell
   };
 
   # HOME-MANAGER USER CONFIG
   home-manager.users.gamer = {
+    # HOME-MANAGER VERSION
     home.stateVersion = "24.11";
+
+    # HOME-MANAGER PACKAGES
     home.packages = with pkgs; [
       # Choose packages: https://search.nixos.org/packages
       brave
@@ -65,24 +68,24 @@
       icon = "utitilities-terminal"
     };
     
-    # home.activation.battleNetInstaller = ''
-    # if [ ! -f $HOME/Battle.net.desktop ]; then
-    #   $DRY_RUN_CMD echo '
-    #     [Desktop Entry]
-    #     Name=Battle.net-Setup
-    #     Exec=export WINEARCH=win64 export WINEPREFIX=$HOME/.wine; wget -O $HOME/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 $HOME/Battle.net-Setup.exe; $SHELL
-    #     Terminal=true
-    #     Type=Application
-    #     Icon=utilities-terminal
-    #   ' > Desktop/Battle.net-Setup.desktop
-
     #   # Alternative working: Exec=if [ ! -d $HOME/.wine-battlenet ]; then export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk; fi; wget -O /home/gamer/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 /home/gamer/Battle.net-Setup.exe; $SHELL
     #   # Exec=sh -c with single quotes not working while inside single quotes multiline
     #   # Exec=sh -c 'if [ ! -d $HOME/.wine-battlenet ]; then export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk; fi; wget -O /home/gamer/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 /home/gamer/Battle.net-Setup.exe; $SHELL'
 
-    #   chmod u+x $HOME/Battle.net-Setup.desktop
-    # fi
-    # '';
+    # ZSH SHELL
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+
+    # HELIX
+    programs.helix = {
+      enable = true;
+      # languages = {};
+      # settings = {};
+    };
     
   };
 

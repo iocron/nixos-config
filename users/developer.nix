@@ -23,7 +23,7 @@ in
     isNormalUser = true;
     # description = "developer";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    # shell = pkgs.fish; # Set fish as default shell
+    # shell = pkgs.zsh; # Set fish as default shell
   };
 
   # HOME-MANAGER USER CONFIG
@@ -245,5 +245,6 @@ in
       # languages = {};
       # settings = {};
     };
+
   };
 }
