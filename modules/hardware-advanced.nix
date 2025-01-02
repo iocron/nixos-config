@@ -9,7 +9,7 @@
 
     # OpenGL
     hardware.opengl.enable = true;
-    hardware.opengl.driSupport = true;
+    # hardware.opengl.driSupport = true; # DEPRECATED: has no effect anymore
     hardware.opengl.driSupport32Bit = true;
 
     # Load nvidia driver for Xorg and Wayland
@@ -18,7 +18,7 @@
     # services.xserver.videoDrivers = [ "amdgpu" ];
 
     # Enable sound with pipewire.
-    sound.enable = true;
+    # sound.enable = true; # DEPRECATED: has no effect anymore
     hardware.pulseaudio.enable = false;
     services.pipewire = {
       enable = true;
