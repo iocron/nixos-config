@@ -4,12 +4,14 @@
 
   config = { # config = rec { ... }; # if you want to use self-referencing variables
     # Enable the X11 windowing system.
-    services.xserver.enable = true;
+    # services.xserver.enable = true;
 
     # Enable the KDE Plasma Desktop Environment.
-    services.xserver.displayManager.sddm.enable = true;
-    services.xserver.desktopManager.plasma6.enable = true;
-    # services.xserver.desktopManager.plasma5.enable = true;
+    # services.xserver.desktopManager.plasma5.enable = true; // OLD
+    # services.xserver.displayManager.sddm.enable = true; // OLD
+    services.desktopManager.plasma6.enable = true;
+    services.displayManager.sddm.enable = true;
+
     # services.xserver.displayManager.setupCommands = ''
     #   kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName big_icons # icons
     # '';
