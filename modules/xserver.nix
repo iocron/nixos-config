@@ -8,7 +8,7 @@
 
     # Enable the KDE Plasma Desktop Environment.
     services.xserver.displayManager.sddm.enable = true;
-    services.xserver.desktopManager.plasma5.enable = true;
+    # services.xserver.desktopManager.plasma5.enable = true;
     # services.xserver.displayManager.setupCommands = ''
     #   kwriteconfig5 --file ~/.config/kwinrc --group TabBox --key LayoutName big_icons # icons
     # '';
