@@ -50,8 +50,10 @@
     # }];
 
     # Configure keymap in X11
-    services.xserver.layout = "de";
-    services.xserver.variant = "";
+    services.xserver.xkb = {
+      layout = "de";
+      variant = "";
+    };
 
     # Enable touchpad support (enabled default in most desktopManager).
     ## services.xserver.libinput.enable = true;
