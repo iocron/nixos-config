@@ -1,6 +1,6 @@
 { pkgs, lib, buildPackages, ... }: 
 let 
-  customConfig = import /users/kde-config.nix;
+  # customConfig = import /users/kde-config.nix;
   defaultBrowser = "brave";
   defaultEditor = "hx";
   # someVariable = "123"; # use inside "in" block
