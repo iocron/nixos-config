@@ -62,10 +62,11 @@
 
     xdg.desktopEntries.Battlenet-Setup = {
       name = "Battlenet-Setup";
-      exec = "export WINEARCH=win64 export WINEPREFIX=$HOME/.wine; wget -O $HOME/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 $HOME/Battle.net-Setup.exe; $SHELL";
+      # exec = "export WINEARCH=win64 export WINEPREFIX=$HOME/.wine; wget -O $HOME/Battle.net-Setup.exe \"https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe\"; wine64 $HOME/Battle.net-Setup.exe; $SHELL";
+      exec = "sh -c 'export WINEARCH=win64 WINEPREFIX=$HOME/.wine && wget -O $HOME/Battle.net-Setup.exe \"https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe\" && wine64 $HOME/Battle.net-Setup.exe && exec $SHELL'";
       terminal = false;
       type = "Application";
-      icon = "utitilities-terminal"
+      icon = "utitilities-terminal";
     };
     
     #   # Alternative working: Exec=if [ ! -d $HOME/.wine-battlenet ]; then export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk; fi; wget -O /home/gamer/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 /home/gamer/Battle.net-Setup.exe; $SHELL
