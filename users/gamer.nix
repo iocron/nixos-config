@@ -63,7 +63,7 @@
       terminal = false;
       type = "Application";
       icon = "utitilities-terminal"
-    }
+    };
     
     # home.activation.battleNetInstaller = ''
     # if [ ! -f $HOME/Battle.net.desktop ]; then
