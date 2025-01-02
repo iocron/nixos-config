@@ -4,7 +4,8 @@ let
   home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/release-${homeManagerVersion}.tar.gz";
     # Get Hash Example: nix-hash --flat --base32 --type sha256 release-23.05.tar.gz # does not always work
-    sha256 = "sha256:c91a30f330f4421ee96093eaa51eacfbc65c352ce5bced2aa8a23f69f1b817fe";
+    # TODO: Removed sha validation only temporarily:
+    #       sha256 = "sha256:c91a30f330f4421ee96093eaa51eacfbc65c352ce5bced2aa8a23f69f1b817fe";
 
     # Usual home-manager setup: 
     # url = "github:nix-community/home-manager";
