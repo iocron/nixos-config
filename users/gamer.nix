@@ -56,24 +56,33 @@
     # home.activation = if pkgs.stdenv.isDarwin then {} else {};
     # (see also: https://nixos.wiki/wiki/Battle.net)
     # (sometimes manual dxvk is required if pkgs.dxvk is not working: export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk;)
-    home.activation.battleNetInstaller = ''
-    if [ ! -f $HOME/Battle.net.desktop ]; then
-      $DRY_RUN_CMD echo '
-        [Desktop Entry]
-        Name=Battle.net-Setup
-        Exec=export WINEARCH=win64 export WINEPREFIX=$HOME/.wine; wget -O $HOME/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 $HOME/Battle.net-Setup.exe; $SHELL
-        Terminal=true
-        Type=Application
-        Icon=utilities-terminal
-      ' > Desktop/Battle.net-Setup.desktop
 
-      # Alternative working: Exec=if [ ! -d $HOME/.wine-battlenet ]; then export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk; fi; wget -O /home/gamer/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 /home/gamer/Battle.net-Setup.exe; $SHELL
-      # Exec=sh -c with single quotes not working while inside single quotes multiline
-      # Exec=sh -c 'if [ ! -d $HOME/.wine-battlenet ]; then export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk; fi; wget -O /home/gamer/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 /home/gamer/Battle.net-Setup.exe; $SHELL'
+    xdg.desktopEntries.Battlenet-Setup = {
+      name = "Battlenet-Setup";
+      exec = "export WINEARCH=win64 export WINEPREFIX=$HOME/.wine; wget -O $HOME/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 $HOME/Battle.net-Setup.exe; $SHELL";
+      terminal = false;
+      type = "Application";
+      icon = "utitilities-terminal"
+    }
+    
+    # home.activation.battleNetInstaller = ''
+    # if [ ! -f $HOME/Battle.net.desktop ]; then
+    #   $DRY_RUN_CMD echo '
+    #     [Desktop Entry]
+    #     Name=Battle.net-Setup
+    #     Exec=export WINEARCH=win64 export WINEPREFIX=$HOME/.wine; wget -O $HOME/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 $HOME/Battle.net-Setup.exe; $SHELL
+    #     Terminal=true
+    #     Type=Application
+    #     Icon=utilities-terminal
+    #   ' > Desktop/Battle.net-Setup.desktop
 
-      chmod u+x Desktop/Battle.net-Setup.desktop
-    fi
-    '';
+    #   # Alternative working: Exec=if [ ! -d $HOME/.wine-battlenet ]; then export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk; fi; wget -O /home/gamer/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 /home/gamer/Battle.net-Setup.exe; $SHELL
+    #   # Exec=sh -c with single quotes not working while inside single quotes multiline
+    #   # Exec=sh -c 'if [ ! -d $HOME/.wine-battlenet ]; then export WINEARCH=win64; export WINEPREFIX=$HOME/.wine-battlenet; winetricks dxvk; fi; wget -O /home/gamer/Battle.net-Setup.exe "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"; wine64 /home/gamer/Battle.net-Setup.exe; $SHELL'
+
+    #   chmod u+x $HOME/Battle.net-Setup.desktop
+    # fi
+    # '';
     
   };
 
