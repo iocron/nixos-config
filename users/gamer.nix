@@ -63,7 +63,9 @@
     xdg.desktopEntries.Battlenet-Setup = {
       name = "Battlenet-Setup";
       # exec = "export WINEARCH=win64 export WINEPREFIX=$HOME/.wine; wget -O $HOME/Battle.net-Setup.exe \"https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe\"; wine64 $HOME/Battle.net-Setup.exe; $SHELL";
-      exec = "sh -c 'export WINEARCH=win64 WINEPREFIX=$HOME/.wine && wget -O $HOME/Battle.net-Setup.exe \"https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe\" && wine64 $HOME/Battle.net-Setup.exe && exec $SHELL'";
+      exec = ''
+        sh -c "export WINEARCH=win64 WINEPREFIX=\$HOME/.wine && wget -O \$HOME/Battle.net-Setup.exe 'https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe' && wine64 \$HOME/Battle.net-Setup.exe && exec \$SHELL"
+      '';
       terminal = false;
       type = "Application";
       icon = "utitilities-terminal";
