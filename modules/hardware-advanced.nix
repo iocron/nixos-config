@@ -8,9 +8,10 @@
     hardware.bluetooth.enable = true;
 
     # OpenGL
-    hardware.opengl.enable = true;
+    hardware.graphics.enable32Bit = true # opengl.enable/driSupport has been replaced by this
+    # hardware.opengl.enable = true;
     # hardware.opengl.driSupport = true; # DEPRECATED: has no effect anymore
-    hardware.opengl.driSupport32Bit = true;
+    # hardware.opengl.driSupport32Bit = true;
 
     # Load nvidia driver for Xorg and Wayland
     # (read further: https://nixos.wiki/wiki/Nvidia)

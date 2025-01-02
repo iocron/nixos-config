@@ -126,7 +126,7 @@
       # firefox
       # fish
       git
-      gnome.gedit
+      gedit
       gparted
       helix
       htop
