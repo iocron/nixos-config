@@ -135,7 +135,7 @@ in
       defaultApplications."x-scheme-handler/about" = "${defaultBrowser}.desktop";
       defaultApplications."x-scheme-handler/http" = "${defaultBrowser}.desktop";
       defaultApplications."x-scheme-handler/https" = "${defaultBrowser}.desktop";
-      defaultApplications."x-scheme-handler/unknown" = "${defaultBrowser}.desktop";
+      # defaultApplications."x-scheme-handler/unknown" = "${defaultBrowser}.desktop";
 
       # MIME Associated Apps (Non-Enforced)
       # associations.added."application/javascript" = "codium.desktop";
