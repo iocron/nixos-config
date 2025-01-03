@@ -6,7 +6,7 @@
   config = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    boot.initrd.luks.devices."luks-6b862ad1-3067-42fc-b873-04e2cc152d9e".device = "/dev/disk/by-uuid/6b862ad1-3067-42fc-b873-04e2cc152d9e";
+    # boot.initrd.luks.devices."luks-6b862ad1-3067-42fc-b873-04e2cc152d9e".device = "/dev/disk/by-uuid/6b862ad1-3067-42fc-b873-04e2cc152d9e";
     # boot.initrd.luks.devices."luks-fd66369f-8038-4437-b5f1-519c670d0265".device = "/dev/disk/by-uuid/fd66369f-8038-4437-b5f1-519c670d0265";
 
     # boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" "hid_multitouch" ];
