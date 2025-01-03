@@ -3,7 +3,7 @@
 ## man home-configuration.nix
 ## nixos-help # Open NixOS Manual in the Browser
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixos-hardware, ... }:
 # let
   # https://www.reddit.com/r/NixOS/comments/k2wq3h/importing_variables_from_a_file/ 
   # variables = import ./variables.nix { inherit config pkgs lib; };
@@ -34,14 +34,11 @@
   # TODO: PLEASE change modules/boot.nix if you are using a ENCRYPTED DEVICE!!
 
   imports = [
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/framework/16-inch/7040-amd" # ALTERNATIVE_TO_INSTALL_HARDWARE_PACKAGE: https://github.com/NixOS/nixos-hardware/tree/master
       ./hardware-configuration.nix
-      ./modules/hardware-advanced.nix
-      ./modules/boot.nix
-      ./modules/language.nix
-      ./modules/networking.nix
-      ./modules/security.nix
-      ./modules/system.nix
-      ./modules/xserver.nix # INFO: check if really needed for KDE6
+      ./hardware-configuration-custom.nix
+      ./language.nix
+      ./system.nix
       ./users
   ];
 }

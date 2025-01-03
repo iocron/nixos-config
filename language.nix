@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   # import = [];
+  # USAGE: Usage in other nix configuration files: config.defaultLang
 
   config = rec {
     defaultLang = "de";

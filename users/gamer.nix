@@ -20,8 +20,10 @@
     home.stateVersion = "24.11";
 
     # HOME-MANAGER PACKAGES
+    ## Package List: https://search.nixos.org/packages
+    ## Package Options: https://home-manager-options.extranix.com/
+
     home.packages = with pkgs; [
-      # Choose packages: https://search.nixos.org/packages
       brave
       discord
       dxvk # Wine DirectX dependency

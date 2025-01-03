@@ -16,7 +16,7 @@
     nixpkgs.config.allowUnfree = true;
     
     # Set some Env Defaults
-    # environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+    # environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.brave}/bin/brave";
     # environment.shellAliases.code = "${pkgs.vscode}/bin/code"; # or in home-manager
     
     # Console Keymap
@@ -29,7 +29,7 @@
     # programs.fish.enable = true;
 
     # FLATPAK
-    services.flatpak.enable = false;
+    # services.flatpak.enable = false;
 
     # Enable Nix-Flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];  
@@ -104,7 +104,7 @@
       setSocketVariable = true;
     };
     
-    # FIREFOX
+    # BROWSER TELEMETRY
     programs.firefox.policies.DisableTelemetry = true;
     
     # CRYPTO, YUBIKEY, GNUPG, PCSCD, ..
@@ -116,12 +116,15 @@
     # services.yubikey-agent.enable = true;
   
     # SYSTEM PACKAGES INSTALL
+    ## Package List: https://search.nixos.org/packages
+    ## Package Options: https://home-manager-options.extranix.com/
     # (to search already installed packages use: `nix search wget`)
+    
     environment.systemPackages = with pkgs; [
       # Choose packages: https://search.nixos.org/packages
       # carps-cups # optional
       # canon-cups-ufr2 # optional
-      brave
+      # brave
       dig
       # firefox
       # fish
@@ -131,9 +134,12 @@
       helix
       htop
       home-manager
+      kdePackages.plasma-firewall
       mtr
       mullvad-vpn
       neovim
+      nvtopPackages.amd
+      radeontop
       # sane-airscan # optional (Print Autodiscover)
       # starship
       tree

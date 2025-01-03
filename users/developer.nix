@@ -41,8 +41,10 @@ in
     home.stateVersion = "24.11";
 
     # HOME-MANAGER PACKAGES
+    ## Package List: https://search.nixos.org/packages
+    ## Package Options: https://home-manager-options.extranix.com/
+
     home.packages = with pkgs; [
-      # Choose packages from: https://search.nixos.org/packages
       act # Run GitHub Actions locally
       # aichat # https://github.com/sigoden/aichat
       # alacritty # Terminal Emulator
@@ -51,6 +53,7 @@ in
       awscli2 # DevOps (includes: aws aws_completer)
       awsls # DevOps
       awslogs # DevOps
+      brave # Brave Browser
       bottom # A better htop
       bun # Faster JS Runtime
       chromium # Browser
@@ -68,6 +71,7 @@ in
       gitlab-ci-local # gitlab local executor (e.g. for debugging)
       go # GoLang
       gopls # GoLang LSP
+      haskellPackages.kmonad
       hcloud # Hetzner Cloud
       jq # JSON Parser
       psmisc # includes: fuser, killall, prtstat, pslog, pstree, peekfd
@@ -113,6 +117,7 @@ in
       terraform # DevOps (IaC)
       terraform-ls
       # thunderbird # Mail App
+      tldr
       trippy # Network Diagnostic
       trivy # DevOps / SecOps
       # wezterm # Terminal Emulator
@@ -178,7 +183,7 @@ in
     # programs.keychain.enableFishIntegration = true;
     programs.keychain.enableBashIntegration = true;
     programs.keychain.enableZshIntegration = true;
-    programs.keychain.keys = [ "$HOME/.ssh/id_rsa" "$HOME/.ssh/id_ed25519_sk" ];
+    programs.keychain.keys = [ "$HOME/.ssh/id_rsa" ]; # "$HOME/.ssh/id_ed25519_sk"
 
     # DIRENV
     programs.direnv.enable = true;

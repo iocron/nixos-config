@@ -57,8 +57,9 @@
     };
 
     # Enable touchpad support (enabled default in most desktopManager).
-    # services.synaptics.enable = true;
+    # services.xserver.synaptics.enable = true;
     services.libinput.enable = true;
+    # services.xserver.libinput.enable = true;
   };
 
   # options = {};
