@@ -3,7 +3,15 @@
 ## man home-configuration.nix
 ## nixos-help # Open NixOS Manual in the Browser
 
-{ config, pkgs, lib, nixos-hardware, ... }:
+## INSTALL_INFO_01: Install nixos-hardware first before using nixos-rebuild!! See: https://github.com/NixOS/nixos-hardware/tree/master or as below:
+##  sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
+##  sudo nix-channel --update
+
+## INSTALL_INFO_02: Add & Update nixos-unstable before using the unstable channel:
+##  sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+##  sudo nix-channel --update
+
+{ config, pkgs, lib, ... }:
 # let
   # https://www.reddit.com/r/NixOS/comments/k2wq3h/importing_variables_from_a_file/ 
   # variables = import ./variables.nix { inherit config pkgs lib; };
@@ -12,7 +20,8 @@
 # in 
 {
   imports = [
-      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/framework/16-inch/7040-amd" # ALTERNATIVE_TO_INSTALL_HARDWARE_PACKAGE: https://github.com/NixOS/nixos-hardware/tree/master
+      # "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/framework/16-inch/7040-amd" # ALTERNATIVE_TO_INSTALL_HARDWARE_PACKAGE: https://github.com/NixOS/nixos-hardware/tree/master
+      <nixos-hardware/framework/16-inch/7040-amd>
       ./hardware-configuration.nix
       ./hardware-configuration-custom.nix
       ./language.nix
