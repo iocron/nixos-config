@@ -6,6 +6,8 @@
   config = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    # TODO: ADJUST if needed for Luks: boot.initrd.luks.devices."luks-eb7c9b3a-b014-4257-99cc-ce757f709a4f".device = "/dev/disk/by-uuid/eb7c9b3a-b014-4257-99cc-ce757f709a4f";
+ 
     # boot.initrd.luks.devices."luks-6b862ad1-3067-42fc-b873-04e2cc152d9e".device = "/dev/disk/by-uuid/6b862ad1-3067-42fc-b873-04e2cc152d9e";
     # boot.initrd.luks.devices."luks-fd66369f-8038-4437-b5f1-519c670d0265".device = "/dev/disk/by-uuid/fd66369f-8038-4437-b5f1-519c670d0265";
 
@@ -115,13 +117,13 @@
     # Load nvidia driver for Xorg and Wayland
     # (read further: https://nixos.wiki/wiki/Nvidia)
     # (see also: https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix)
-    services.xserver.videoDrivers = [ "modesetting" ]; # OLD: "amdgpu" or "nvidia"
+    services.xserver.videoDrivers = [ "modesetting" ]; # NEW: "modesetting" # OLD: "amdgpu" or "nvidia"
 
     # Firmware, Disk, FileSystem
     # (see also: https://github.com/quentinmit/isz/blob/main/goddard/configuration.nix)
     services.fstrim.enable = true;
     services.smartd.enable = true;
-    services.fwupd.enable = true;
+    services.fwupd.enable = true; # RUN_TO_UPDATE_FIRMWARE: fwupdmgr update
 
     # Linux Kernal Binary Optimizer
     services.hardware.bolt.enable = true;
@@ -130,7 +132,7 @@
     # hardware.keyboard.qmk.enable = true;
 
     # Special Kernal Boot
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
     # boot.kernelParams = [''dyndbg="file drivers/base/firmware_loader/main.c +fmp"''];
 
     # Enable sound with pipewire.

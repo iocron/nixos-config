@@ -2,6 +2,8 @@
 ## man home-manager
 ## man home-configuration.nix
 ## nixos-help # Open NixOS Manual in the Browser
+## nixos-option services # List nixos options of a service/package
+## nixos-option services.mullvad-vpn # Show nixos options of a explicit service/package
 
 ## INSTALL_INFO_01: Install nixos-hardware first before using nixos-rebuild!! See: https://github.com/NixOS/nixos-hardware/tree/master or as below:
 ##  sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware

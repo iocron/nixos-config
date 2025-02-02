@@ -105,6 +105,7 @@ in
       # pulumi # Competitor to Terraform
       # pycritty # Configurator for alacritty
       # rancher # DevOps
+      rpi-imager
       rclone # cloud storage sync tool
       ripgrep # Regex Pattern String Replacer
       rustup # Rust (Toolchain)
@@ -117,7 +118,7 @@ in
       terraform # DevOps (IaC)
       terraform-ls
       # thunderbird # Mail App
-      tldr
+      tldr # simplified man-pages for commands
       trippy # Network Diagnostic
       trivy # DevOps / SecOps
       # wezterm # Terminal Emulator
